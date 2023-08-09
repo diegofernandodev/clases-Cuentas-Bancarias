@@ -6,21 +6,22 @@ export class CuentaCorriente extends CuentaBancaria {
     super(saldo, tasaAnual);
     this.sobregiro = 0;
   }
-  retirar(vrRetirar:number) {
+  retirar(vrRetirar: number) {
     console.log("\n");
     console.log("----------------------Retiro-------------------------");
+    const retiro: number = this.saldo;
     if (vrRetirar > this.saldo) {
       this.sobregiro = this.saldo - vrRetirar;
       this.saldo = 0;
-      this.totalRetiros += (vrRetirar - this.saldo)
+      this.totalRetiros += retiro;
       this.numeroRetiros += 1;
       console.log(
-        `El numero de tu retiro es ${this.numeroRetiros}\n El valor retirado es = ${vrRetirar}\n Nuevo saldo = ${this.saldo}\n Tienes un sobregiro por valor de $${this.sobregiro}`
+        `El numero de tu retiro es ${this.numeroRetiros}\n El valor retirado es = ${retiro}\n Nuevo saldo = ${this.saldo}\n Tienes un sobregiro por valor de $${this.sobregiro}`
       );
     } else {
       this.numeroRetiros += 1;
       this.saldo -= vrRetirar;
-      this.totalRetiros += vrRetirar
+      this.totalRetiros += vrRetirar;
       console.log(
         `El numero de tu retiro es ${this.numeroRetiros}\n El valor retirado es = ${vrRetirar}\n Nuevo saldo = ${this.saldo}`
       );
@@ -30,19 +31,16 @@ export class CuentaCorriente extends CuentaBancaria {
     console.log("\n");
     console.log("-------------------Consignacion----------------------");
     let diferencia = vrConsignar - this.sobregiro;
-    if (this.sobregiro < 0) {
-      if (vrConsignar > this.sobregiro) {
-        this.sobregiro = 0;
-        this.saldo += diferencia;
-      } else {
-        this.sobregiro -= diferencia;
-      }
-    } else if (this.sobregiro === 0) {
+    if (diferencia <= 0) {
+      this.sobregiro += vrConsignar;
+      console.log(`El saldo de tu sobregiro es = ${this.sobregiro}}`);
+    } else {
+      this.saldo += diferencia;
+      this.sobregiro = 0;
       this.numeroConsignacion += 1;
-      this.saldo += vrConsignar;
-      this.totalConsignaciones += vrConsignar
+      this.totalConsignaciones += vrConsignar;
       console.log(
-        `El numero de tu consignacion es ${this.numeroConsignacion}\n El valor consignado es = ${vrConsignar}\n Nuevo saldo = ${this.saldo}`
+        `El numero de tu consignacion es ${this.numeroConsignacion}\n El valor consignado es = ${diferencia}\n Nuevo saldo = ${this.saldo}`
       );
     }
   }
