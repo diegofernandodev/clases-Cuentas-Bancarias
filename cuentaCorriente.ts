@@ -16,7 +16,7 @@ export class CuentaCorriente extends CuentaBancaria {
       this.totalRetiros += retiro;
       this.numeroRetiros += 1;
       console.log(
-        `El numero de tu retiro es ${this.numeroRetiros}\n El valor retirado es = ${retiro}\n Nuevo saldo = ${this.saldo}\n Tienes un sobregiro por valor de $${this.sobregiro}`
+        `El numero de tu retiro es ${this.numeroRetiros}\n El valor retirado es = ${vrRetirar}\n Nuevo saldo = ${this.saldo}\n Tienes un sobregiro por valor de $${this.sobregiro}`
       );
     } else {
       this.numeroRetiros += 1;
@@ -30,10 +30,11 @@ export class CuentaCorriente extends CuentaBancaria {
   consignar(vrConsignar: number) {
     console.log("\n");
     console.log("-------------------Consignacion----------------------");
-    let diferencia = vrConsignar - this.sobregiro;
-    if (diferencia <= 0 && this.sobregiro > 0) {
-      this.sobregiro += vrConsignar;
-      console.log(`El saldo de tu sobregiro es = ${this.sobregiro}`);
+    let diferencia = vrConsignar + this.sobregiro;
+    if (diferencia >= 0 && this.sobregiro < 0) {
+      this.sobregiro -= this.sobregiro;
+      this.saldo += diferencia
+      console.log(`El saldo de tu sobregiro es = ${this.sobregiro} valor consignado  ${diferencia} nuevo saldo ${this.saldo}`);
     } else {
       if (vrConsignar > 0) {
       this.saldo += diferencia;
