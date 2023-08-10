@@ -62,7 +62,7 @@ console.log("\n");
 const consinarC1 = cuentaCorriente1.consignar(60000)
 const consinarC2 = cuentaCorriente1.consignar(-20000)
 
-const retiroC1 = cuentaCorriente1.retirar(60000)
+const retiroC1 = cuentaCorriente1.retirar(80000)
 const retiroC2 = cuentaCorriente1.retirar(200000)
 
 const consinarC3 = cuentaCorriente1.consignar(200000)

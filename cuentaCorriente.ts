@@ -31,10 +31,11 @@ export class CuentaCorriente extends CuentaBancaria {
     console.log("\n");
     console.log("-------------------Consignacion----------------------");
     let diferencia = vrConsignar - this.sobregiro;
-    if (diferencia <= 0) {
+    if (diferencia <= 0 && this.sobregiro > 0) {
       this.sobregiro += vrConsignar;
-      console.log(`El saldo de tu sobregiro es = ${this.sobregiro}}`);
+      console.log(`El saldo de tu sobregiro es = ${this.sobregiro}`);
     } else {
+      if (vrConsignar > 0) {
       this.saldo += diferencia;
       this.sobregiro = 0;
       this.numeroConsignacion += 1;
@@ -42,6 +43,11 @@ export class CuentaCorriente extends CuentaBancaria {
       console.log(
         `El numero de tu consignacion es ${this.numeroConsignacion}\n El valor consignado es = ${diferencia}\n Nuevo saldo = ${this.saldo}`
       );
+      } else {
+        console.log("El valor ingresado no es valido");
+        
+      }
+      
     }
   }
   ExtractoMensual() {

@@ -59,6 +59,7 @@ export class CuentaBancaria {
     const abonosEnCuenta = this.totalConsignaciones;
     const valorInteres = this.interesMensual();
     const valorRetiros = this.totalRetiros;
+    
 
     const nuevoSaldo =
       this.inicial +
