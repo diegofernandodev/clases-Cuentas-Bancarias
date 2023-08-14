@@ -7,6 +7,8 @@ export class CuentaBancaria {
   protected numeroRetiros: number;
   protected tasaAnual: number;
   protected comisionMensual: number;
+  protected consignaciones: number[] = []
+  protected retiros: number[] = []
   constructor(saldo: number, tasaAnual: number) {
     this.totalConsignaciones = 0
     this.totalRetiros = 0
@@ -16,6 +18,8 @@ export class CuentaBancaria {
     this.numeroConsignacion = 0;
     this.numeroRetiros = 0;
     this.comisionMensual = 0;
+    this.consignaciones = []
+    this.retiros = []
   }
   
   public consignar(vrConsignar: number) {
@@ -24,6 +28,7 @@ export class CuentaBancaria {
     if (vrConsignar > 0) {
       this.numeroConsignacion += 1;
       this.saldo += vrConsignar;
+      this.consignaciones.push(vrConsignar)
       this.totalConsignaciones += vrConsignar
       console.log(
         `El numero de tu consignacion es ${this.numeroConsignacion}\n El valor consignado es = ${vrConsignar}\n Nuevo saldo = ${this.saldo}`
@@ -41,6 +46,7 @@ export class CuentaBancaria {
     } else {
       this.numeroRetiros += 1;
       this.saldo -= vrRetirar;
+      this.retiros.push(vrRetirar)
       this.totalRetiros += vrRetirar
       console.log(
         `El numero de tu retiro es ${this.numeroRetiros}\n El valor retirado es = ${vrRetirar}\n Nuevo saldo = ${this.saldo}`
@@ -51,6 +57,20 @@ export class CuentaBancaria {
     const intMes = (this.saldo * (this.tasaAnual / 12)) / 100;
     return intMes;
   }
+
+  public movimientoCuenta() {
+    console.log("\n");
+    console.log("-------------------Movimiento Cuenta----------------");
+    
+    for (let i = 0; i < this.consignaciones.length; i++) {
+        console.log(`Consignacion # ${i + 1} = ${this.consignaciones[i]}`);
+    }
+
+    for (let i = 0; i < this.retiros.length; i++) {
+        console.log(`--------------------------Retiro # ${i + 1} = ${this.retiros[i]}`);
+    }
+}
+
 
   public ExtractoMensual(): void {
     
@@ -75,6 +95,7 @@ export class CuentaBancaria {
     console.log(`Valor retiros = $${valorRetiros.toFixed(2)}`);
     console.log(`Comisión descontada = $${this.comisionMensual.toFixed(2)}`);
     console.log(`Saldo actual = $${nuevoSaldo.toFixed(2)}`);
+    this.movimientoCuenta()
   }
   public imprimirAtributos(): void {
     console.log("\n");

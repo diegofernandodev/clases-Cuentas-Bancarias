@@ -17,12 +17,13 @@ export class CuentaAhorros extends CuentaBancaria {
     console.log("\n");
     console.log("-------------------Consignacion----------------------");
     if (vrConsignar > 0 && this.estadoCuenta()) {
-      this.numeroConsignacion += 1;
+      /*this.numeroConsignacion += 1;
       this.saldo += vrConsignar;
       this.totalConsignaciones += vrConsignar
       console.log(
         `El numero de tu consignacion es ${this.numeroConsignacion}\n El valor consignado es = ${vrConsignar}\n Nuevo saldo = ${this.saldo}`
-      );
+      );*/
+      super.consignar(vrConsignar)
     } else {
       console.log("No es posible realizar la consignacion");
     }
@@ -31,12 +32,13 @@ export class CuentaAhorros extends CuentaBancaria {
     console.log("\n");
     console.log("----------------------Retiro-------------------------");
     if ((vrRetirar > 0 && this.estadoCuenta()) && vrRetirar <= this.saldo) {
-      this.numeroRetiros += 1;
+      /*this.numeroRetiros += 1;
       this.saldo -= vrRetirar;
       this.totalRetiros += vrRetirar
       console.log(
         `El numero de tu retiro es ${this.numeroRetiros}\n El valor retirado es = ${vrRetirar}\n Nuevo saldo = ${this.saldo}`
-      );
+      );*/
+      super.retirar(vrRetirar)
     } else {
       console.log("No es posible realizar el retiro");
     }

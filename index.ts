@@ -2,8 +2,8 @@ import { CuentaBancaria } from "./cuentaBancaria";
 import { CuentaAhorros } from "./cuentaAhorros";
 import { CuentaCorriente } from "./cuentaCorriente";
 
-const cuentaBancari1 = new CuentaBancaria(20000,24)
-/*console.log("-----------------CUENTA BANCARIA-----------------");
+/*const cuentaBancari1 = new CuentaBancaria(20000,24)
+console.log("-----------------CUENTA BANCARIA-----------------");
 console.log("\n");
 
 const consignacion1 = cuentaBancari1.consignar(100000)
@@ -30,7 +30,7 @@ const extracto1 = cuentaBancari1.ExtractoMensual()
 
 const imprimirAcb = cuentaBancari1.imprimirAtributos()*/
 
-/*const cuentaAhorro1 = new CuentaAhorros(100000,18,true)
+const cuentaAhorro1 = new CuentaAhorros(100000,18,true)
 
 console.log("-----------------CUENTA AHORROS-----------------");
 console.log("\n");
@@ -52,7 +52,7 @@ const interesMA = cuentaAhorro1.interesMensual()
 console.log(interesMA);
 
 console.log("\n");
-const extractoA1 = cuentaAhorro1.ExtractoMensual()*/
+const extractoA1 = cuentaAhorro1.ExtractoMensual()
 
 const cuentaCorriente1 = new CuentaCorriente(100000,12)
 
@@ -76,7 +76,7 @@ const interesMC = cuentaCorriente1.interesMensual()
 console.log(interesMC);
 
 console.log("\n");
-const extractoA1 = cuentaCorriente1.ExtractoMensual()
+const extractoC1 = cuentaCorriente1.ExtractoMensual()
 
 const imprimirACC = cuentaCorriente1.imprimirAtributos()
 
